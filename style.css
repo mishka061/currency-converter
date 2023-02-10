@@ -1,0 +1,57 @@
+/* По умолчанию удаляем все отступы и поля для все элементов
+  и устанавливаем для свойства размер окна */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* явно пределяем размер шрифта */
+html {
+    font-size: 16px;
+}
+/* Шрифт, цвет фона */
+body {
+    font-family: 'Montserrat', sans-serif;
+  background-color: rgb(130, 124, 150);
+  color: #ffffff;
+}
+/* помещаем контейнер в центр по горизонтали */
+.container {
+    width: 500px;
+    margin: 20px auto;
+}
+.header {
+    background-color: rgb(57, 63, 119);
+    text-align: center;
+    padding: 1.75rem;
+}
+/* Единица rem задаёт размер относительно размера шрифта элемента <html> */
+.header h1 {
+    font-size: 2.25rem;
+}
+.date {
+    background-color: #222;
+    text-align: right;
+    font-size: 0.75rem;
+    padding: 0.75rem 2rem 0.75rem 0;
+}
+ul.currencies {
+    height: 500px;
+    background-color: #222;
+}
+.add-currency-list {
+
+}
+.add-currency-btn {
+    background-color: #00b386;
+    color: #fffcfc;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    bottom: none;
+    border-top: 3px solid #222;
+    outline: none;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
