@@ -12,8 +12,8 @@ html {
 /* Шрифт, цвет фона */
 body {
     font-family: 'Montserrat', sans-serif;
-  background-color: rgb(130, 124, 150);
-  color: #ffffff;
+    background-color: rgb(130, 124, 150);
+    color: #ffffff;
 }
 /* помещаем контейнер в центр по горизонтали */
 .container {
@@ -46,18 +46,68 @@ ul.currencies li {
     border-radius: 5px;
     list-style: none;
     padding: 1rem 1rem 0.75rem 1rem;
+    margin-bottom: 1rem;
+    position: relative; /*сдвигает элемент относительно его обычного положения.*/
     
 }
-.add-currency-btn {
-    background-color: #00b386;
-    color: #fffcfc;
-    padding: 1rem;
-    font-size: 1.2rem;
+/* удаляем поле последнего элемента margin-bottom: 1rem; */
+ul.currencies li:last-child {
+    margin-bottom: 0;
+}
+ul.currencies li.base-currency {
+    background-color: rgb(64, 45, 238);
+}
+.flag {
+    width: 60px;
+    height: 40px;
+    border: 1px solid #fff;
+    vertical-align: top;  /* Выравнивает верхний край элемента и его потомков с верхним краем всей строки*/
+}
+/* элемент, который продолжает находиться в строке 
+(inline), но при этом может иметь важные свойства блока */
+.info {
+    display: inline-block;
+    width: 78%;
+}
+.info .input span {
+    font-size: 1.5rem;
+    display: inline-block;
+    width: 4rem;
+    text-align: center;
+}
+/*transparent - возвращаем прозрачный фон блоку, если ранее он уже был изменён*/
+.info .input input {
+    font-size: 1.5rem;   
+    width: 78%;   /*ширину элемента */
+    background-color: transparent; 
+    border: 2px solid #fff;   /*устанавливаем границы элемента */
+    border-radius: 5px;   /*скругляем */
+    color: #ffffff;
+    padding: 0.3rem;   /*делаем внутренние отступы */
+    margin-bottom: 0.75rem;   /*внешний отступ внизу элемента */
+}
+.currency-name {
+    font-size: 1rem;
     font-weight: bold;
-    bottom: none;
-    border-top: 3px solid #222;
-    outline: none;
+    margin-bottom: 0.5rem;
+    margin-left: 4rem; /*устанавливает внешний отступ слева от элемента*/
+
+}
+.base-currency-rate {
+    font-size: 0.8rem;
+    margin-left: 4rem;
+}
+
+.add-currency-btn {
+    background-color: #00b386;  /*устанавливаем цвет фона элемента */
+    color: #fffcfc;
+    padding: 1rem;   /*делаем внутренние отступы */
+    font-size: 1.2rem;  /*устанавливаем размер текста */
+    font-weight: bold; /* жирное начертание*/
+    bottom: none; /*устанавливает положение нижнего края содержимого элемента без учёта толщины рамок и отступов*/
+    border-top: 3px solid #222; /*установливает толщину, стиль и цвет верхней границы элемента*/
+    outline: none; /* не отображает стиль контура*/
     width: 100%;
-    cursor: pointer;
-    transition: background-color 0.25s;
+    cursor: pointer;  /*это появление курсора при наведении на элемент*/
+    transition: background-color 0.25s; /* анимирует исходное значение CSS-свойства на новое значение с течением времени*/
 }

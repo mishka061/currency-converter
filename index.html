@@ -16,7 +16,26 @@
             <h1>Конвертер Валют</h1>
         </div>
         <div class="date">2023-02-10</div>
-        <ul class="currencies"></ul>
+        <ul class="currencies">
+            <li class="currency base-currency" id="USD">
+                <img src="https://www.geonames.org/flags/l/us.gif" class="flag">
+                <div class="info">
+                    <p class="input"><span class="currency-simbol">&#36;</span><input placeholder="0.0000""></p>
+                    <p class="currency-name">USD - US Dollar</p>
+                    <p class="base-currency-rate"> 1 USD = 1 USD</p>
+                </div>
+                <span class="close">&times;</span>
+            </li>
+            <li class="currency" id="JPY">
+                <img src="https://www.geonames.org/flags/l/jp.gif" class="flag">
+                <div class="info">
+                    <p class="input"><span class="currency-simbol">&#165;</span><input placeholder="0.0000""></p>
+                    <p class="currency-name">jpy - Japanese Yen</p>
+                    <p class="base-currency-rate"> 1 USD = 111.0401 JPY</p>
+                </div>
+                <span class="close">&times;</span>
+            </li>
+        </ul>
         <ul class="add-currency-list"></ul>
         <button class="add-currency-btn">Добавить валюту</button>
     </div>
