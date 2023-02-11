@@ -15,10 +15,14 @@ body {
     background-color: rgb(130, 124, 150);
     color: #ffffff;
 }
+
+
 /* помещаем контейнер в центр по горизонтали */
 .container {
     width: 500px;
     margin: 20px auto;
+    user-select: none; /* определяет может ли пользователь выбрать текст*/
+    overflow-x: hidden; /*Содержимое элемента, которое не помещается в его размеры по оси X, обрезается.*/
     position: relative;
 }
 .header {
@@ -30,12 +34,15 @@ body {
 .header h1 {
     font-size: 2.25rem;
 }
+
+
 .date {
     background-color: #222;
     text-align: right;
     font-size: 0.75rem;
     padding: 0.75rem 2rem 0.75rem 0;
 }
+
 
 ul.currencies {
     height: calc(100vh - 40px - 100px - 40px - 58px);/*высота равная 100% области просмотра минус (.container margin 20px * 2 = 40)верхнее и нижнее поле,минус высота заголовка(100рх),высота даты которая составляет 40рх минус высота кнопки 58 рх
@@ -64,7 +71,6 @@ ul.currencies li .close {
 ul.currencies li .close:hover { 
     color: #fff; /*меняет цвет при наведении мышки*/
 }
-
 /*стиль полосы прокрутки*/
 ul.currencies::-webkit-scrollbar{
     width: 10px;
@@ -73,8 +79,6 @@ ul.currencies::-webkit-scrollbar-thumb{
     background-color: #2d2d2d;
     border-bottom: 1px solid #222;
 }
-
-
 /* удаляем поле последнего элемента margin-bottom: 1rem; */
 ul.currencies li:last-child {
     margin-bottom: 0;
@@ -82,12 +86,16 @@ ul.currencies li:last-child {
 ul.currencies li.base-currency {
     background-color: rgb(64, 45, 238);
 }
+
+
 .flag {
     width: 60px;
     height: 40px;
     border: 1px solid #fff;
     vertical-align: top;  /* Выравнивает верхний край элемента и его потомков с верхним краем всей строки*/
 }
+
+
 /* элемент, который продолжает находиться в строке 
 (inline), но при этом может иметь важные свойства блока */
 .info {
@@ -111,25 +119,26 @@ ul.currencies li.base-currency {
     padding: 0.3rem;   /*делаем внутренние отступы */
     margin-bottom: 0.75rem;   /*внешний отступ внизу элемента */
 }
-.currency-name {
+.info .currency-name {
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
     margin-left: 4rem; /*устанавливает внешний отступ слева от элемента*/
-
 }
-.base-currency-rate {
+.info .base-currency-rate {
     font-size: 0.8rem;
     margin-left: 4rem;
 }
+
+
 ul.add-currency-list {
     position: absolute;
     bottom: 54px;
-    left: 0;
+    left: 105%;
     background-color: #ffffff;
     color: #333;
     width: 100%;
-    height: 0;
+    height: calc(100vh - 40px - 100px - 55px);
     overflow-y: auto;
     transition: all 0.25s;   /*анимация ко всему объекту 0,25сек*/
 }
@@ -152,25 +161,60 @@ ul.add-currency-list li span{
     margin-left: 1rem;
     font-weight: bold;
 }
+
+
 .add-currency-btn {
     background-color: #00b386;  /*устанавливаем цвет фона элемента */
     color: #fffcfc;
     padding: 1rem;   /*делаем внутренние отступы */
     font-size: 1.2rem;  /*устанавливаем размер текста */
     font-weight: bold; /* жирное начертание*/
-    bottom: none; /*устанавливает положение нижнего края содержимого элемента без учёта толщины рамок и отступов*/
+    border: none; /*устанавливает положение нижнего края содержимого элемента без учёта толщины рамок и отступов*/
     border-top: 3px solid #222; /*установливает толщину, стиль и цвет верхней границы элемента*/
     outline: none; /* не отображает стиль контура*/
     width: 100%;
     cursor: pointer;  /*это появление курсора при наведении на элемент*/
     transition: background-color 0.25s; /* анимирует исходное значение CSS-свойства на новое значение с течением времени*/
+    position: relative;
+}
+.add-currency-btn i {
+    position: absolute;
+    top: 0.75rem;
+    left: 30%;
+    font-size: 2rem;
+    opacity: 0;
+    transition: all 0.25s;
 }
 
 /*изменяем цвет фона кнопки "добавить валюту" при наведении*/
-.add-currency-btn:hover {
+.add-currency-btn.open {
     background-color: coral;
 }
+.add-currency-btn.open i {
+    opacity: 1;
+    left: 1.25rem;
+}
 /*отображение для блокировки*/
-.add-currency-btn:hover + ul.add-currency-list {
-    height: calc(100vh - 40px - 100px - 55px);
+.add-currency-btn.open + ul.add-currency-list {
+    left: 0;
+}
+.add-currency-btn.open + ul.add-currency-list li:hover {
+    background-color: #ddd;
+}
+
+
+/*для экранов шириной 600рх и меньше*/
+@media (max-width: 600px) {
+    html { font-size: 14px; }
+    .container { width: 100%; margin: 0 auto; }
+    ul.currencies { height: calc(100vh - 83px - 34px - 51px); }
+    .header h1 { font-size: 2rem; }
+    .flag { width: 3rem; height: 2rem; }
+    .info .input span { font-size: 1.25rem; width: 3.5rem; }
+    .info .input input { font-size: 1.25rem; width: 76%;}
+    .info .currency-name { margin-left: 3.5rem; }
+    .info .base-currency-rate { margin-left: 3.5rem; }
+    ul.add-currency-list { bottom: 48px; height: calc(100vh - 80px - 51px); }
+    .add-currency-btn i { left: 25%; top:0.65rem; }
+  }
 }
