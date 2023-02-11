@@ -19,6 +19,7 @@ body {
 .container {
     width: 500px;
     margin: 20px auto;
+    position: relative;
 }
 .header {
     background-color: rgb(57, 63, 119);
@@ -121,7 +122,36 @@ ul.currencies li.base-currency {
     font-size: 0.8rem;
     margin-left: 4rem;
 }
-
+ul.add-currency-list {
+    position: absolute;
+    bottom: 54px;
+    left: 0;
+    background-color: #ffffff;
+    color: #333;
+    width: 100%;
+    height: 0;
+    overflow-y: auto;
+    transition: all 0.25s;   /*анимация ко всему объекту 0,25сек*/
+}
+ul.add-currency-list li {
+    list-style: none;
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd; /*нижняя граница элемента border*/
+}
+ul.add-currency-list li.disabled {
+    opacity: 0.7;  /*не прозрачность*/
+    cursor: not-allowed; /*курсор-запрещено*/
+}
+ul.add-currency-list li .flag{
+    width: 3rem;
+    height: 2rem;
+    vertical-align: middle; /*Выравнивает изображение по центру относительно текстовой базовой линии*/
+}
+/*текстовый блок*/
+ul.add-currency-list li span{
+    margin-left: 1rem;
+    font-weight: bold;
+}
 .add-currency-btn {
     background-color: #00b386;  /*устанавливаем цвет фона элемента */
     color: #fffcfc;
@@ -134,4 +164,13 @@ ul.currencies li.base-currency {
     width: 100%;
     cursor: pointer;  /*это появление курсора при наведении на элемент*/
     transition: background-color 0.25s; /* анимирует исходное значение CSS-свойства на новое значение с течением времени*/
+}
+
+/*изменяем цвет фона кнопки "добавить валюту" при наведении*/
+.add-currency-btn:hover {
+    background-color: coral;
+}
+/*отображение для блокировки*/
+.add-currency-btn:hover + ul.add-currency-list {
+    height: calc(100vh - 40px - 100px - 55px);
 }
