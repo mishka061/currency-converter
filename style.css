@@ -37,9 +37,11 @@ body {
 }
 
 ul.currencies {
-    height: 500px;
+    height: calc(100vh - 40px - 100px - 40px - 58px);/*высота равная 100% области просмотра минус (.container margin 20px * 2 = 40)верхнее и нижнее поле,минус высота заголовка(100рх),высота даты которая составляет 40рх минус высота кнопки 58 рх
+    */
     background-color: #222;
     padding: 0 1.5rem 1rem 1.5rem;
+    overflow-y: auto; /*поведение блока при переполнении высоте-Полоса прокрутки*/
 }
 ul.currencies li {
     background-color: #2d2d37;
@@ -48,8 +50,30 @@ ul.currencies li {
     padding: 1rem 1rem 0.75rem 1rem;
     margin-bottom: 1rem;
     position: relative; /*сдвигает элемент относительно его обычного положения.*/
-    
 }
+ul.currencies li .close {
+    position: absolute; /* позиционирование элемента относительно окна браузера*/
+    top: 0; /*частично определяет вертикальную позицию позиционируемого элемента*/
+    right: 0;
+    padding: 0 0.5rem;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+}
+ul.currencies li .close:hover { 
+    color: #fff; /*меняет цвет при наведении мышки*/
+}
+
+/*стиль полосы прокрутки*/
+ul.currencies::-webkit-scrollbar{
+    width: 10px;
+}
+ul.currencies::-webkit-scrollbar-thumb{
+    background-color: #2d2d2d;
+    border-bottom: 1px solid #222;
+}
+
+
 /* удаляем поле последнего элемента margin-bottom: 1rem; */
 ul.currencies li:last-child {
     margin-bottom: 0;
